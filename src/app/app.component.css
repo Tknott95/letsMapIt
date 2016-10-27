@@ -4,4 +4,7 @@
 
 .navbar-inverse {
     margin-bottom: 0;
+    color: e;
+    border-color: black;
+    background-color: darkred;
 }
