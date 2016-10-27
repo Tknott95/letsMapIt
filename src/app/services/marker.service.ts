@@ -3,7 +3,9 @@ import { Init } from '../init-markers';
 
 @Injectable()
 export class MarkerService extends Init{
-    constructor(){//runs any constructor or intitalization in init class
+
+    // runs any constructor or intitalization in init class
+    constructor(){
         super(); 
         console.log('MarkerService Initialed...');
         this.load();
@@ -20,9 +22,23 @@ export class MarkerService extends Init{
         // Push to array
 
         markers.push(newMarker);
-        
+
         // Set to local storage again
         localStorage.setItem('markers', JSON.stringify(markers));
-    }
+        }
+
+        updateMarker(marker, newLat, newLng){
+            // Fetch markers
+            var markers = JSON.parse(localStorage.getItem('markers'));
+
+            for(var i = 0;i < markers.length;i++){
+                if(marker.lat == markers[i].lat && marker.lng == markers[i].lng){
+                    markers[i].lat = newLat;
+                    markers[i].lng = newLng;
+                }
+            }
+            //set to Local Sorage
+            localStorage.setItem('markers', JSON.stringify(markers));
+        }
 
 }

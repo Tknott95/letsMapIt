@@ -63,6 +63,8 @@ export class AppComponent {
     var newLat = $event.coords.lat;
     var newLng = $event.coords.lng;
 
+    this._markerService.updateMarker(updMarker, newLat, newLng);
+
   }
 
 
