@@ -15,8 +15,12 @@
   <div class="row">
     <div class="col-md-12">
       <div class="map">
-          <sebm-google-map [latitude]="lat" [longitude]="lng">
-          <sebm-google-map-marker [latitude]="lat" [longitude]="lng"></sebm-google-map-marker>
+          <sebm-google-map [zoom]="zoom" [disableDefaultUI]="false" [zoomControl]="false" [latitude]="lat" [longitude]="lng" (mapClick)="mapClicked($event)">
+            <sebm-google-map-marker *ngFor="let m of markers;let i = index" (markerClick)="clickedMarker(m, i)" [latitude]="m.lat" [markerDraggable]="m.draggable"  (dragEnd)="markerDragEnd(m, $event)" [longitude]="m.lng">
+            </sebm-google-map-marker>
+              <sebm-google-map-info-window>
+                <strong>{{m.name}}</strong>
+              </sebm-google-map-info-window>
           </sebm-google-map>
       </div>
     </div>
