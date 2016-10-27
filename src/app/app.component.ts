@@ -57,6 +57,21 @@ export class AppComponent {
     this.markers.push(newMarker);
   }
 
+  markerDragEnd(marker:any, $event: any){
+    console.log('dragEnd', marker, $event);
+
+    var updMarker = {
+      name: marker.name,
+      lat: parseFloat(marker.lat),
+      lng: parseFloat(marker.lng),
+      draggable: false
+    }
+
+    var newLat = $event.coords.lat;
+    var newLng = $event.coords.lng;
+
+  }
+
 }
 
 //Marker Type
