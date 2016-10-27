@@ -41,4 +41,18 @@ export class MarkerService extends Init{
             localStorage.setItem('markers', JSON.stringify(markers));
         }
 
+        removeMarker(marker){
+            // Fetch markers
+            var markers = JSON.parse(localStorage.getItem('markers'));
+
+            for(var i = 0;i < markers.length;i++){
+                if(marker.lat == markers[i].lat && marker.lng == markers[i].lng){
+                    markers.splice(i, 1);
+                }
+            }
+            //set to Local Sorage
+            localStorage.setItem('markers', JSON.stringify(markers));
+        
+        }
+
 }
