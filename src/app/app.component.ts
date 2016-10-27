@@ -1,9 +1,12 @@
 import { Component } from '@angular/core';
+import { MarkerService } from './services/marker.service';
+
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
+  providers: [MarkerService]
 })
 export class AppComponent {
   title = 'app works!';
@@ -24,30 +27,11 @@ export class AppComponent {
 
 
   // Markers
-  markers: marker[] = [
-    {
-      name: 'Fort Collins',
-      lat: 40.548776,
-      lng: -105.065905,
-      draggable: true
-    },
-    {
-      name: 'Greeley',
-      lat: 40.414137,
-      lng: -104.771171,
-      draggable: true
-    },
-    {
-      name: 'Johnstown',
-      lat: 40.349805,
-      lng: -104.949745,
-      draggable: true
-    }
-  ];
+  markers: marker[] = [];
 
 
-  constructer(){
-
+  constructor(private _markerService: MarkerService){
+    this.markers = this._markerService.getMarkers();
   }
   
   clickedMarker(marker: marker, index: number){
@@ -100,7 +84,7 @@ export class AppComponent {
     }
 
     this.markers.push(newMarker);
-
+    this._markerService.addMarker(newMarker);
   }
 
 }
