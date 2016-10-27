@@ -1,3 +1,7 @@
 .sebm-google-map-container {
   height: 300px;
 }
+
+.navbar-inverse {
+    margin-bottom: 0;
+}
