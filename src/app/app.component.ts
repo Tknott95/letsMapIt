@@ -41,7 +41,22 @@ export class AppComponent {
 
   }
   
+  clickedMarker(marker: marker, index: number){
+    console.log('Clicked Marker: '+marker.name+' at index '+index);
+  }
   
+  mapClicked($event: any){
+    console.log('map clicked at latitude: '+$event.coords.lat+' and logitude: '+$event.coords.lng);
+    var newMarker = {
+        name: "Untitled",
+        lat: $event.coords.lat,
+        lng: $event.coords.lng,
+        draggable: false
+    }
+
+    this.markers.push(newMarker);
+  }
+
 }
 
 //Marker Type
